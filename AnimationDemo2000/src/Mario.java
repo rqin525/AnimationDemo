@@ -22,10 +22,17 @@ public class Mario extends Sprite {
 
 	public void jump() {
 		// JUMP!
+		moveByAmount(0, -MARIO_HEIGHT);
 	}
 
 	public void act(ArrayList<Shape> obstacles) {
 		// FALL (and stop when a platform is hit)
+		
+		for(Shape s : obstacles) {
+			if(!s.intersects(this)) {
+				moveByAmount(0, MARIO_HEIGHT/5);
+			}
+		}
 	}
 
 
